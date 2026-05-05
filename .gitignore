@@ -1,0 +1,9 @@
+.gradle/
+build/
+.idea/
+*.iml
+allure-results/
+allure-report/
+*.log
+application.properties
+aqa-shop.jar

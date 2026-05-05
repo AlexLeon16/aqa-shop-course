@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.12.0'
+}
+
+group = 'ru.netology'
+version = '1.0-SNAPSHOT'
+
+java { toolchain { languageVersion = JavaLanguageVersion.of(11) } }
+
+allure {
+    version = '2.29.0'
+    useJUnit5 { version = '2.29.0' }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.3'
+    testImplementation 'com.codeborne:selenide:7.4.2'
+    testImplementation 'io.qameta.allure:allure-selenide:2.29.0'
+    testImplementation 'org.assertj:assertj-core:3.26.3'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'mysql:mysql-connector-java:8.0.33'
+    testImplementation 'org.postgresql:postgresql:42.7.3'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.13'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty 'selenide.headless', System.getProperty('selenide.headless', 'true')
+    systemProperty 'sut.url', System.getProperty('sut.url', 'http://localhost:8080')
+    systemProperty 'db.url', System.getProperty('db.url', 'jdbc:mysql://localhost:3306/app')
+    systemProperty 'db.user', System.getProperty('db.user', 'app')
+    systemProperty 'db.password', System.getProperty('db.password', 'pass')
+    systemProperty 'db.type', System.getProperty('db.type', 'mysql')
+    testLogging { events 'passed', 'skipped', 'failed' }
+}
