@@ -92,19 +92,3 @@ java -jar aqa-shop.jar
 ./gradlew allureServe
 ```
 
-## Публикация на GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial coursework automation project"
-git branch -M main
-git remote add origin https://github.com/<username>/<repo>.git
-git push -u origin main
-```
-
-## Важно
-
-Файл `aqa-shop.jar` обычно не добавляют в репозиторий, если наставник не требует обратного. Если файл обязателен для проверки, уточните это у наставника.
-
-Если тесты падают из-за дефектов приложения, это нормально: нужно оформить соответствующие GitHub Issues со скриншотами и описанием фактического/ожидаемого результата.
